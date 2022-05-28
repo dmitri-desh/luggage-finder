@@ -14,15 +14,15 @@ namespace WebApp.Context
         {
             builder.Entity<Flight>()
                 .HasOne(a => a.DepartureAirport)
-                .WithMany(f => f.Flights)
+                .WithMany()
                 .HasForeignKey(af => af.DepartureAirportId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<Flight>()
-            //   .HasOne(a => a.ArrivalAirport)
-            //   .WithMany(f => f.Flights)
-            //   .HasForeignKey(af => af.ArrivalAirportId)
-            //   .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<Flight>()
+               .HasOne(a => a.ArrivalAirport)
+               .WithMany()
+               .HasForeignKey(af => af.ArrivalAirportId)
+               .OnDelete(DeleteBehavior.Restrict);
         }
 
         public DbSet<Airport> Airports { get; set; }

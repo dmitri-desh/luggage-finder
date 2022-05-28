@@ -52,6 +52,12 @@ namespace WebApp.Migrations
                 {
                     table.PrimaryKey("PK_Flights", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Flights_Airports_ArrivalAirportId",
+                        column: x => x.ArrivalAirportId,
+                        principalTable: "Airports",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Flights_Airports_DepartureAirportId",
                         column: x => x.DepartureAirportId,
                         principalTable: "Airports",
@@ -83,6 +89,11 @@ namespace WebApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flights_ArrivalAirportId",
+                table: "Flights",
+                column: "ArrivalAirportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Flights_DepartureAirportId",

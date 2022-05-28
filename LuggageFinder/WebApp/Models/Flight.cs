@@ -27,13 +27,17 @@ namespace WebApp.Models
         [Required(ErrorMessage = "The Track Number field is required.")]
         public string TrackNumber { get; set; }
         public Status? Status { get; set; }
+
+
         public int? DepartureAirportId { get; set; }
-        public int? ArrivalAirportId { get; set; }
 
         [ForeignKey("DepartureAirportId")]
         public virtual Airport DepartureAirport { get; set; }
 
-        //[ForeignKey("ArrivalAirportId")]
-        //public virtual Airport ArrivalAirport { get; set; }
+
+        public int? ArrivalAirportId { get; set; }
+
+        [ForeignKey("ArrivalAirportId")]
+        public virtual Airport ArrivalAirport { get; set; }
     }
 }

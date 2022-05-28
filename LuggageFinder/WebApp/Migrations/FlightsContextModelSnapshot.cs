@@ -132,6 +132,8 @@ namespace WebApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ArrivalAirportId");
+
                     b.HasIndex("DepartureAirportId");
 
                     b.ToTable("Flights");
@@ -150,10 +152,17 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Models.Flight", b =>
                 {
+                    b.HasOne("WebApp.Models.Airport", "ArrivalAirport")
+                        .WithMany()
+                        .HasForeignKey("ArrivalAirportId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("WebApp.Models.Airport", "DepartureAirport")
-                        .WithMany("Flights")
+                        .WithMany()
                         .HasForeignKey("DepartureAirportId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ArrivalAirport");
 
                     b.Navigation("DepartureAirport");
                 });
@@ -161,11 +170,6 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.AuthModels.Role", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("WebApp.Models.Airport", b =>
-                {
-                    b.Navigation("Flights");
                 });
 #pragma warning restore 612, 618
         }
