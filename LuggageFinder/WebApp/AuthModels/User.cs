@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.Models
+namespace WebApp.AuthModels
 {
-    public class Flight
+    public class User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "The Username field is required.")]
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "The First Name field is required.")]
         public string FirstName { get; set; }
@@ -19,21 +22,13 @@ namespace WebApp.Models
         [EmailAddress(ErrorMessage = "The Email field is not a valid e-mail address.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "The Name field is required.")]
+        [Required(ErrorMessage = "The Phone field is required.")]
         [Phone(ErrorMessage = "The Phone field is not a valid format.")]
         public string Phone { get; set; }
-        public string DestinationAddress { get; set; }
+        public string Address { get; set; }
+        public int RoleId { get; set; }
 
-        [Required(ErrorMessage = "The Track Number field is required.")]
-        public string TrackNumber { get; set; }
-        public Status? Status { get; set; }
-        public int? DepartureAirportId { get; set; }
-        public int? ArrivalAirportId { get; set; }
-
-        [ForeignKey("DepartureAirportId")]
-        public virtual Airport DepartureAirport { get; set; }
-
-        //[ForeignKey("ArrivalAirportId")]
-        //public virtual Airport ArrivalAirport { get; set; }
+        [ForeignKey("RoleId")]
+        public virtual Role UserRole { get; set; }
     }
 }

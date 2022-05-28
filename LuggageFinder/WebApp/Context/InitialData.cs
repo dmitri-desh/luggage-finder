@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using WebApp.Models;
+using WebApp.AuthModels;
 
 namespace WebApp.Context
 {
@@ -22,6 +20,14 @@ namespace WebApp.Context
                 dbContext.Airports.Add(new Airport { Name = "Tokyo" });
                 dbContext.Airports.Add(new Airport { Name = "Minsk" });
                 dbContext.Airports.Add(new Airport { Name = "Istanbul" });
+
+                dbContext.SaveChanges();
+            }
+
+            if (!dbContext.Roles.Any())
+            {
+                dbContext.Roles.Add(new Role { Name = "Admin" });
+                dbContext.Roles.Add(new Role { Name = "Customer" });
 
                 dbContext.SaveChanges();
             }
