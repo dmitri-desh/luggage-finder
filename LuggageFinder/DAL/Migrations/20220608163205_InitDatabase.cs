@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApp.Migrations
+namespace DAL.Migrations
 {
-    public partial class InitialData : Migration
+    public partial class InitDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,8 +46,10 @@ namespace WebApp.Migrations
                     DestinationAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TrackNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: true),
-                    DepartureAirportId = table.Column<int>(type: "int", nullable: true),
-                    ArrivalAirportId = table.Column<int>(type: "int", nullable: true)
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ArrivalAirportId = table.Column<int>(type: "int", nullable: true),
+                    DepartureAirportId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,7 +93,7 @@ namespace WebApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+           migrationBuilder.CreateIndex(
                 name: "IX_Flights_ArrivalAirportId",
                 table: "Flights",
                 column: "ArrivalAirportId");

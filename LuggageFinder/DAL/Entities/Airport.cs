@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.AuthModels
+namespace DAL.Entities
 {
-    public class Role
+    public class Airport
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,6 +13,6 @@ namespace WebApp.AuthModels
         [Required(ErrorMessage = "The Name field is required.")]
         public string Name { get; set; }
 
-        public List<User> Users { get; set; }
+        public List<Flight> Flights { get; set; }
     }
 }

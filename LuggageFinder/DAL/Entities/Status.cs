@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models
+﻿namespace DAL.Entities
 {
     public enum Status
     {

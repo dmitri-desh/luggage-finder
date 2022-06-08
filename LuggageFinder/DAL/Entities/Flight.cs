@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApp.Models
+namespace DAL.Entities
 {
     public class Flight
     {
@@ -28,16 +29,25 @@ namespace WebApp.Models
         public string TrackNumber { get; set; }
         public Status? Status { get; set; }
 
+        [Required(ErrorMessage = "The CreationDate field is required.")]
+        [DataType(DataType.DateTime)]
+        public DateTime CreationDate { get; set; }
 
+        [DataType(DataType.DateTime)]
+        public DateTime? ModificationDate { get; set; }
+
+        
+        public int? ArrivalAirportId { get; set; }
+
+
+        [ForeignKey("ArrivalAirportId")]
+        public virtual Airport ArrivalAirport { get; set; }
+
+
+        
         public int? DepartureAirportId { get; set; }
 
         [ForeignKey("DepartureAirportId")]
         public virtual Airport DepartureAirport { get; set; }
-
-
-        public int? ArrivalAirportId { get; set; }
-
-        [ForeignKey("ArrivalAirportId")]
-        public virtual Airport ArrivalAirport { get; set; }
     }
 }

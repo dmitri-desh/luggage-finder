@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using WebApp.Models;
-using WebApp.AuthModels;
+using DAL.Entities;
+using DAL.Entities.Auth;
 
-namespace WebApp.Context
+namespace DAL.Context
 {
     public static class InitialData
     {
-        public static void Seed(this FlightsContext dbContext)
+        public static void Seed(this DatabaseContext dbContext)
         {
             if (!dbContext.Airports.Any())
             {
