@@ -6,7 +6,7 @@ namespace DAL.Functions.Interfaces
 {
     public interface IFlightOperations
     {
-        Task<Flight> AddFullFlight(string firstName, string lastName, string email, string phone, string destinationAddress);
-        Task<List<Flight>> GetFlightsByUser(string firstName, string lastName, string email);
+        Task<Flight> AddLuggageRequest(Flight flight);
+        Task<List<Flight>> GetLuggageRequestsByUsername(string email);
     }
 }

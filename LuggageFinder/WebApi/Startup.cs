@@ -1,3 +1,5 @@
+using BLL.Services.Implementation;
+using BLL.Services.Interfaces;
 using DAL.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,9 @@ namespace WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
             services.AddDbContext<DatabaseContext>(x => x.UseSqlServer(new AppConfiguration().SqlConnectionString));
+
+            services.AddScoped<IFlightService, FlightService>();
+            services.AddScoped<IAirportService, AirportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
