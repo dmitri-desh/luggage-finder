@@ -7,7 +7,7 @@ namespace LuggageFinder.Application.Flights.Queries.GetFlightDetails
     public class FlightDetailsVm : IMapWith<Flight>
     {
         public long? Id { get; set; }
-        public string UserId { get; set; }
+        public long UserId { get; set; }
         public string DestinationAddress { get; set; }
         public string TrackNumber { get; set; }
         public Status? Status { get; set; }
