@@ -8,7 +8,7 @@ namespace LuggageFinder.Domain
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         
         public string DestinationAddress { get; set; }
 
