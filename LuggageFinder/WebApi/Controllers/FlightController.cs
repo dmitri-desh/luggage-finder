@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class FlightController : ControllerBase
     {
-        private IFlightService _flightService;
+        private readonly IFlightService _flightService;
 
         public FlightController(IFlightService flightService)
         {

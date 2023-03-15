@@ -47,10 +47,10 @@ namespace DAL.Functions.Specific
                           
                             return luggageToFind;
                         }
-                        catch
+                        catch (Exception ex)
                         {
                             await transaction.RollbackAsync();
-                            throw new NotImplementedException();
+                            throw new Exception(ex.Message);
                         }
                     }
                 }
